@@ -21,8 +21,7 @@ public abstract class Sports extends Events{
        this.winsForSecond=winsForSecond;
        this.competitionType=competitionType;
     }
-    //10/10 overriden
-
+    //!Action
     @Override
     public void addEvent() {
         super.addEvent();
@@ -50,7 +49,7 @@ public abstract class Sports extends Events{
         this.winsForSecond=winsForSecond;
         this.winsForFirst=winsForFirst;
     }
-
+    //Action!
     public CompetitionType getCompetitionType() {
         return competitionType;
     }
@@ -74,7 +73,7 @@ public abstract class Sports extends Events{
     public void setWinsForSecond(int winsForSecond) {
         this.winsForSecond = winsForSecond;
     }
-    // 3/10
+    // !Action
     public abstract String winnerPrediction();
     @Override
     public boolean equals(Object o) {
@@ -83,7 +82,7 @@ public abstract class Sports extends Events{
         Sports sports = (Sports) o;
         return getName()==sports.getName() && getNumberTickets()==sports.getNumberTickets() && getPrice()==sports.getPrice() && getLocation()==sports.getLocation() && winsForFirst == sports.winsForFirst && winsForSecond == sports.winsForSecond && competitionType == sports.competitionType;
     }
-
+    //Action!
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(),winsForFirst, winsForSecond, competitionType);

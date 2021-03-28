@@ -19,9 +19,6 @@ import java.util.Comparator;
 import java.util.Locale;
 
 public class Main {
-    public static Boolean cmp(String a, String b){
-        return a.length()>b.length();
-    }
     public static void main(String[] args)
     {
        // demonstrating the project features
@@ -59,14 +56,14 @@ public class Main {
 
 
         //FootballGames class is a subclass of Sports and is use to have all the details about a football game
-        //It overrides the add Event method, has a specific formula to determine the possible winner or a competition and has a method that tells you about the importance of a match by the number of games that two teams had
+        //It overrides the add Event method, has a specific formula to determine the possible winner of a competition and has a method that tells you about the importance of a match by the number of games that two teams had
         FootballGames fg = new FootballGames();
         fg.addEvent();
         System.out.println(fg.winnerPrediction());
         System.out.println(fg.gameDescription());
 
         //Abstract class Cultural is a subclass of Events that is use to establish the principal attributes of a show event
-        //It overrides the add Event method and has an abstract method that is used by the subclasses to review a show\
+        //It overrides the add Event method and has an abstract method that is used by the subclasses to review a show
 
         //Movies class is a subclass of Cultural and has the purpose to have all the characteristics of a movie
         //It overrides the add Event method, add Client method and has the possibility to review a movie by giving a number of stars

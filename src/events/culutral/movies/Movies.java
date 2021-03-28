@@ -24,8 +24,7 @@ public class Movies extends Cultural {
         this.minimumAge=minimumAge;
         this.reviewScore=0d;
     }
-    //10/10 override
-
+    //!Action
     @Override
     public void addEvent() {
         super.addEvent();
@@ -52,7 +51,7 @@ public class Movies extends Cultural {
         this.mainActorsName=mainActorsName;
         this.minimumAge=minimumAge;
     }
-
+    //Action!
     public ArrayList<String> getMainActorsName() {
         return mainActorsName;
     }
@@ -76,8 +75,7 @@ public class Movies extends Cultural {
     public void setMinimumAge(Integer minimumAge) {
         this.minimumAge = minimumAge;
     }
-    // 1/10 override
-
+    //!Actions
     @Override
     public void addClient() {
         if(numberTickets==0)
@@ -129,12 +127,10 @@ public class Movies extends Cultural {
         numberTickets--;
 
     }
-    // 5/10 override
     @Override
     public void modifyClientInformation(String personID) {
         super.modifyClientInformation(personID);
     }
-    // 6/10 override
     @Override
     public void reviewShow() {
         double numberOfStars=0d;
@@ -167,11 +163,10 @@ public class Movies extends Cultural {
         else
             reviewScore=(double) numberOfStars;
     }
-    // 6/10 extention
     public double overallScore(){
         return reviewScore;
     }
-
+    //Actions!
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

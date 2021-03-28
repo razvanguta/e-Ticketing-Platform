@@ -24,8 +24,7 @@ public class FootballGames extends Sports{
        this.competitionName=competitionName;
        this.equalGames=equalGames;
    }
-    // 10/10 override
-
+    //!Action
     @Override
     public void addEvent() {
         super.addEvent();
@@ -49,7 +48,7 @@ public class FootballGames extends Sports{
         this.competitionName=competitionName;
         this.equalGames=equalGames;
     }
-
+    //Action!
     public String getAwayTeam() {
         return awayTeam;
     }
@@ -82,7 +81,7 @@ public class FootballGames extends Sports{
         this.equalGames = equalGames;
     }
 
-    // 3/10 Override Sports
+    //!Actions
     @Override
     public String winnerPrediction() {
 
@@ -91,8 +90,6 @@ public class FootballGames extends Sports{
             Double chanceEqual = (double)(equalGames) / (winsForFirst+winsForSecond+equalGames)         ;
             return "The prediction| for "+ homeTeam+" to win is "+chanceFirst+"| for "+awayTeam+" to win is "+chanceSecond+"| for a draw is "+chanceEqual;
      }
-
-     //8/10
     public String gameDescription(){
        Integer totalGames = winsForFirst+winsForSecond+equalGames;
        if(totalGames>100){
@@ -111,6 +108,7 @@ public class FootballGames extends Sports{
                return "The game between "+homeTeam+" and "+awayTeam+" has few total games, but it will be a great show to watch in "+competitionName+"!";
        }
     }
+    //Actions!
 
     @Override
     public boolean equals(Object o) {

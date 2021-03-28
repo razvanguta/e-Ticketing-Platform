@@ -18,8 +18,7 @@ public abstract class Cultural extends Events {
         this.showCategory=showCategory;
         this.showLength=showLength;
     }
-    //10/10 override
-
+    //!Action
     @Override
     public void addEvent() {
         super.addEvent();
@@ -50,7 +49,7 @@ public abstract class Cultural extends Events {
         this.showLength=showLength;
         this.showCategory=showCategory;
     }
-
+    //Action!
     public ShowCategory getShowCategory() {
         return showCategory;
     }
@@ -66,7 +65,7 @@ public abstract class Cultural extends Events {
     public void setShowLength(Integer showLength) {
         this.showLength = showLength;
     }
-    //6/10
+    //!Action
     public abstract void reviewShow();
     @Override
     public boolean equals(Object o) {
@@ -76,7 +75,7 @@ public abstract class Cultural extends Events {
         Cultural cultural = (Cultural) o;
         return getName()==cultural.getName() && getNumberTickets()==cultural.getNumberTickets() && getPrice()==cultural.getPrice() && getLocation()==cultural.getLocation() && showCategory == cultural.showCategory && showLength.equals(cultural.showLength);
     }
-
+    //Action!
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), showCategory, showLength);

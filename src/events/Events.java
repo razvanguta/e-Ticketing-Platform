@@ -25,7 +25,7 @@ public abstract class Events {
        this.price=price;
        this.location=location;
    }
-    // 10/10
+    //!Actions
     public void addEvent(){
         Scanner scanner = new Scanner(System.in);
 
@@ -48,7 +48,6 @@ public abstract class Events {
         this.price=price;
 
     }
-    // 1/10
    public void addClient(){
        if(numberTickets==0)
        {
@@ -97,7 +96,6 @@ public abstract class Events {
 
    }
 
-   // 5/10
     public void modifyClientInformation(String personID){
        Boolean exist = false;
        for(int q=0;q<clients.size();q++){
@@ -130,7 +128,7 @@ public abstract class Events {
            System.out.println("There is no client at this event with the Personal ID you provided!");
 
     }
-
+    //Actions!
     public String getName() {
         return name;
     }

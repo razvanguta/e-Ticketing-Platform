@@ -36,11 +36,10 @@ public class Clients {
         return age;
     }
 
-    //7/10
+    //!ACTIONS
     public void addClientPreferences(ClientPreferences clientPreference){
         cp.add(clientPreference);
     }
-    //7/10 extins
     public String aboutClientPreferences(){
        if(cp.size()==0)
            return "No preferences recorded";
@@ -48,6 +47,7 @@ public class Clients {
            return "The client preference is related to "+cp;
            return "The client preferences are related to "+cp;
     }
+    //ACTIONS!
     public void setAge(Integer age) {
         this.age = age;
     }
