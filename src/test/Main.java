@@ -24,7 +24,7 @@ public class Main {
     }
     public static void main(String[] args)
     {
-        // demonstrating the project features
+       // demonstrating the project features
 
         //Locations class is used to set a place where an event will take place.
         //It can be initialised by specifying the attributes or by using the addLocation method, where you can select the attributes by reading them

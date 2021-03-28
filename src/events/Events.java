@@ -63,7 +63,7 @@ public abstract class Events {
 
        for(int i=0;i<personalID.length();i++) {
            if (personalID.charAt(i) < 48 || personalID.charAt(i) > 57) {
-               throw new ArithmeticException("Your Personal ID must contains only digits!");
+               throw new RuntimeException("Your Personal ID must contains only digits!");
            }
        }
         for(int i=0;i<clients.size();i++){
@@ -83,7 +83,7 @@ public abstract class Events {
 
        for(int i=0;i<phoneNumber.length();i++) {
            if (phoneNumber.charAt(i) < 48 || phoneNumber.charAt(i) > 57) {
-               throw new ArithmeticException("Your phone number must contains only digits!");
+               throw new RuntimeException("Your phone number must contains only digits!");
            }
        }
 
@@ -114,7 +114,7 @@ public abstract class Events {
 
                for(int i=0;i<nphoneNumber.length();i++) {
                    if (nphoneNumber.charAt(i) < 48 || nphoneNumber.charAt(i) > 57) {
-                       throw new ArithmeticException("Your phone number must contains only digits!");
+                       throw new RuntimeException("Your phone number must contains only digits!");
                    }
                }
                this.clients.get(q).setPhoneNumber(nphoneNumber);

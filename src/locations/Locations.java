@@ -20,7 +20,7 @@ public class Locations {
         this.ZIP=ZIP;
         for(int i=0;i<ZIP.length();i++) {
             if (ZIP.charAt(i) < 48 || ZIP.charAt(i) > 57) {
-                throw new ArithmeticException("Your ZIP must contains only digits!");
+                throw new RuntimeException("Your ZIP must contains only digits!");
             }
         }
 

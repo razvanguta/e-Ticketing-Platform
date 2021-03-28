@@ -93,7 +93,7 @@ public class Movies extends Cultural {
 
         for(int i=0;i<personalID.length();i++) {
             if (personalID.charAt(i) < 48 || personalID.charAt(i) > 57) {
-                throw new ArithmeticException("Your Personal ID must contains only digits!");
+                throw new RuntimeException("Your Personal ID must contains only digits!");
             }
         }
         for(int i=0;i<clients.size();i++){
@@ -113,7 +113,7 @@ public class Movies extends Cultural {
 
         for(int i=0;i<phoneNumber.length();i++) {
             if (phoneNumber.charAt(i) < 48 || phoneNumber.charAt(i) > 57) {
-                throw new ArithmeticException("Your phone number must contains only digits!");
+                throw new RuntimeException("Your phone number must contains only digits!");
             }
         }
 
@@ -123,7 +123,7 @@ public class Movies extends Cultural {
         System.out.print("#####################"+'\n');
 
         if(age<minimumAge){
-            throw new ArithmeticException("You don't have the minimum age to attend this movie!");
+            throw new RuntimeException("You don't have the minimum age to attend this movie!");
         }
         clients.add(new Clients(personalID,name,age,email,phoneNumber));
         numberTickets--;

@@ -36,7 +36,7 @@ public abstract class Sports extends Events{
         else if(cT.equals("INTERNATIONAL"))
             competitionType = CompetitionType.INTERNATIONAL;
         else
-            throw new ArithmeticException("No correct Competition Type");
+            throw new RuntimeException("No correct Competition Type");
 
         System.out.println("Wins for the first player: ");
         Integer winsForFirst = scanner.nextInt();

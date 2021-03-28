@@ -42,7 +42,7 @@ public abstract class Cultural extends Events {
         else if(sC.equals("SF"))
             showCategory=ShowCategory.SF;
         else
-            throw new ArithmeticException("Incorrect show category");
+            throw new RuntimeException("Incorrect show category");
 
         System.out.println("Length of the show: ");
         Integer showLength = scanner.nextInt();
