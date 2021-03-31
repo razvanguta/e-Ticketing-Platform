@@ -36,4 +36,4 @@
 # 3.4. Concerts
 -> Clasa Concerts este o subclasa a clasei Events si implementeaza datele necesare unui concert muzical. Suprascrie metoda addEvent si are o metoda care calculeaza distributia locurilor din arena/sala dupa numarul de bilete.
 
-Actiuniile sunt semnalizate in dreptul lor pentru fiecare clasa!!
+*Actiuniile sunt semnalizate in dreptul lor pentru fiecare clasa!!*
