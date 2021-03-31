@@ -3,7 +3,8 @@
  Proiectul acesta dezvolta o platforma de e-Ticketing, unde se gestioneaza achizitia de bilete de catre clienti la diferite evenimente!
 
 # Clasele implementate si utilizarea lor: 
-
+# 0. Main
+-> Utilizata pentru demonstrarea functionalitatilor din cadrul proiectului.
 # 1. Locations
 -> Clasa Locations este utilizata pentru a seta un loc unde va avea loc un eveniment. Poate fi initializata prin specificarea atributelor sau prin utilizarea metodei addLocation, unde puteti selecta atributele citindu-le
 
