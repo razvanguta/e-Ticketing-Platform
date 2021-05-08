@@ -24,8 +24,6 @@ public class TennisGames extends Sports {
         this.secondPlayerName = secondPlayerName;
         this.secondPlayerRank = secondPlayerRank;
     }
-    //10/10 override
-
 
     @Override
     public void addEvent() {
@@ -81,7 +79,6 @@ public class TennisGames extends Sports {
     public void setSecondPlayerRank(Integer secondPlayerRank) {
         this.secondPlayerRank = secondPlayerRank;
     }
-    // 3/10 override sports
     @Override
     public String winnerPrediction() {
         Double chanceFirst =(double)(winsForFirst+secondPlayerRank) / (winsForFirst+winsForSecond+secondPlayerRank );

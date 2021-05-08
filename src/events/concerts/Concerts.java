@@ -12,12 +12,11 @@ public class Concerts extends Events {
     public Concerts(){
 
     }
-    public Concerts(String name, Integer numberTickets, Double price, Locations location,String artistNamem, Integer numberOfAlbums){
+    public Concerts(String name, Integer numberTickets, Double price, Locations location,String artistName, Integer numberOfAlbums){
         super(name,numberTickets,price,location);
-        this.artistName=artistNamem;
+        this.artistName=artistName;
         this.numberOfAlbums=numberOfAlbums;
     }
-    //!Action
     @Override
     public void addEvent() {
         super.addEvent();
@@ -32,7 +31,6 @@ public class Concerts extends Events {
         this.artistName=artistName;
         this.numberOfAlbums=numberOfAlbums;
     }
-    //Action!
     public String getArtistName() {
         return artistName;
     }
@@ -48,14 +46,13 @@ public class Concerts extends Events {
     public void setNumberOfAlbums(Integer numberOfAlbums) {
         this.numberOfAlbums = numberOfAlbums;
     }
-    //!Action
+
     public void capacityDistribution(){
         System.out.println((int)numberTickets*0.1+" tickets are in the first 5 rows");
         System.out.println((int)numberTickets*0.3+" tickets are in the next 15 rows");
         System.out.println((int)numberTickets*0.4+" tickets are in the next 25 rows");
         System.out.println((int)numberTickets*0.2+" tickets are in the next 25+ rows");
     }
-    //Action!
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

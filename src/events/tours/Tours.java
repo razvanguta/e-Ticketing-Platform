@@ -17,7 +17,6 @@ public class Tours extends Events {
         this.tourDate=tourDate;
         this.numberOfDays=numberOfDays;
     }
-    // 10/10 override
     @Override
     public void addEvent() {
         super.addEvent();
@@ -37,7 +36,6 @@ public class Tours extends Events {
         return numberOfDays;
     }
 
-    // 2/10
     public void renewNumberOfDays(){
         Integer newNumberOfDays;
         Scanner scanner = new Scanner(System.in);

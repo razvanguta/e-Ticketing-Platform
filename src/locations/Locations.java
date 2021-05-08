@@ -25,7 +25,7 @@ public class Locations {
         }
 
     }
-    //!Action
+
     public void addLocation(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("######################");
@@ -50,7 +50,7 @@ public class Locations {
 
         System.out.println("######################");
     }
-    //Action!
+
     public String getAddress() {
         return address;
     }

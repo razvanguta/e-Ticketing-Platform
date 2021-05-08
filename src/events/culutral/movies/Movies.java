@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Movies extends Cultural {
-    private Double reviewScore;
+    private Double reviewScore=0d;
     private String movieDirectorName;
     private ArrayList<String> mainActorsName = new ArrayList<String>();
     public Integer minimumAge;
@@ -22,7 +22,7 @@ public class Movies extends Cultural {
         this.movieDirectorName=movieDirectorName;
         this.mainActorsName=mainActorsName;
         this.minimumAge=minimumAge;
-        this.reviewScore=0d;
+
     }
     //!Action
     @Override

@@ -36,7 +36,6 @@ public class Clients {
         return age;
     }
 
-    //!ACTIONS
     public void addClientPreferences(ClientPreferences clientPreference){
         cp.add(clientPreference);
     }
@@ -47,7 +46,6 @@ public class Clients {
            return "The client preference is related to "+cp;
            return "The client preferences are related to "+cp;
     }
-    //ACTIONS!
     public void setAge(Integer age) {
         this.age = age;
     }
