@@ -12,20 +12,33 @@ import locations.Locations;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
+import java.time.LocalDateTime;
 public class Service {
     private static Service single_instance = null;
 
     private Service() {}
 
-    public static Service Menu(List<String[]> readConcerts, List<String[]> readMovies,  List<String[]> readTennisGames, List<String[]> readFootballGames, List<String[]> readTours)
+    public static Service Menu(List<String[]> readAudit,List<String[]> readConcerts, List<String[]> readMovies,  List<String[]> readTennisGames, List<String[]> readFootballGames, List<String[]> readTours)
     {
         if (single_instance == null)
             single_instance = new Service();
         //Read the classes into the Arrays to work with them
+        //Read
+        List<String> audit = new ArrayList<String>();
+        for(String[] sm: readAudit){
+            String a1 = sm[0];
+            String a2 = sm[1];
+            audit.add(sm[0]+","+sm[1]);
+        }
         //Read
         List<Concerts> concerts = new ArrayList<Concerts>();
         for (String[] sm : readConcerts) {
@@ -142,17 +155,19 @@ public class Service {
             Integer numberOfDays = Integer.parseInt(sm[8]);
             tours.add(new Tours(name,numberTickets,price,new Locations(country,city,address,ZIP),tourDate,numberOfDays));
         }
+        System.out.println("Welcome to the main menu!");
+        System.out.println("Pick an action!");
+        System.out.println("0: STOP\n1: Add an event\n2: Add a client to an event\n3: Modify client personal data\n4: Capacity distribution for the concerts\n5: Review a movie\n6: Prediction for all sporting events\n7: Football games description\n8: Renew number of days for a tour\n9: Delete an event");
 
         while(true) {
-            System.out.println("Welcome to the main menu!");
-            System.out.println("Pick an action!");
-            System.out.println("0: STOP\n1: Add an event\n2: Add a client to an event\n3: Modify client personal data\n4: Capacity distribution for the concerts\n5: Review a movie\n6: Prediction for all sporting events\n7: Football games description\n8: Renew number of days for a tour\n9: Delete an event");
             Scanner scanner = new Scanner(System.in);
             Integer option = scanner.nextInt();
             if(option==0){
                 break;
             }
             else if (option == 1) {
+                audit.add("Add an event"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 System.out.println("What kind of event is this?");
                 System.out.println("1: Concert\n2: Movie\n3: Tennis Game\n4: Football Game\n5: Tour");
                 Integer op = scanner.nextInt();
@@ -186,6 +201,8 @@ public class Service {
                 System.out.println(footballGames);
                 System.out.println(tours);
             } else if (option == 2) {
+                audit.add("Add a client to an event"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 System.out.println("Pick a ticket to an event");
                 System.out.println("1: Concert\n2: Movie\n3: Tennis Game\n4: Football Game\n5: Tour");
                 Integer op = scanner.nextInt();
@@ -269,6 +286,8 @@ public class Service {
                 }
             }
             else if(option==3){
+                audit.add("Modify client personal data"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 System.out.println("Provide a valid ID");
                 String ID = scanner.next();
                 for(Concerts c: concerts){
@@ -288,6 +307,8 @@ public class Service {
                 }
             }
             else if(option==4){
+                audit.add("Capacity distribution for a concert"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 if(concerts.size()==0){
                     System.out.println("There is no active concert!");
                 }
@@ -297,6 +318,8 @@ public class Service {
                 }
             }
             else if(option==5){
+                audit.add("Review a movie"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 if (movies.size() == 0) {
                     System.out.println("There is no active movie!");
                 } else {
@@ -314,6 +337,8 @@ public class Service {
                 }
             }
             else if(option==6){
+                audit.add("Prediction for all sporting events"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 for(TennisGames tg: tennisGames){
                     System.out.println(tg.winnerPrediction());
                 }
@@ -322,6 +347,8 @@ public class Service {
                 }
             }
             else if(option==7) {
+                audit.add("Football game description"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 if (footballGames.size() == 0)
                     System.out.println("There is no active tennis game!");
                 for (FootballGames fg : footballGames) {
@@ -329,6 +356,8 @@ public class Service {
                 }
             }
             else if(option==8){
+                audit.add("Renew number of days for a tour"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 if (tours.size() == 0) {
                     System.out.println("There is no active tour!");
                 } else {
@@ -345,7 +374,8 @@ public class Service {
                 }
             }
             else if(option==9){
-
+                audit.add("Remove an event"+","+Timestamp.from(Instant.now()).toString());
+                writeToAudit(audit);
                 Integer i=0;
                 for(Concerts c:concerts){
                     System.out.println(i+" "+c.getName());
@@ -522,6 +552,8 @@ public class Service {
             writeToCsvFile(writeTennisGames, "tennisGames.csv");
             writeToCsvFile(writeFootballGames, "footballGames.csv");
             writeToCsvFile(writeTours, "tours.csv");
+
+
         }
         return single_instance;
     }
@@ -534,6 +566,20 @@ public class Service {
                     if (i < (strings.length - 1))
                         writer.append(",");
                 }
+                writer.append(System.lineSeparator());
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writeToAudit(List<String> aWrite){
+        try (FileWriter writer = new FileWriter("audit.csv")) {
+            String line = "";
+            for(String write: aWrite) {
+                writer.append(write.split(",")[0]);
+                writer.append(",");
+                writer.append(write.split(",")[1]);
                 writer.append(System.lineSeparator());
             }
             writer.flush();
