@@ -1,5 +1,6 @@
 package service;
 
+import readWrite.*;
 import events.Events;
 import events.concerts.Concerts;
 import events.culutral.ShowCategory;
@@ -9,7 +10,8 @@ import events.sports.football.FootballGames;
 import events.sports.tennis.TennisGames;
 import events.tours.Tours;
 import locations.Locations;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -27,21 +29,23 @@ public class Service {
 
     private Service() {}
 
-    public static Service Menu(List<String[]> readAudit,List<String[]> readConcerts, List<String[]> readMovies,  List<String[]> readTennisGames, List<String[]> readFootballGames, List<String[]> readTours)
+    public static Service Menu()
     {
         if (single_instance == null)
             single_instance = new Service();
+        ReadWrite<String> readWrite = new ReadWrite();
+
         //Read the classes into the Arrays to work with them
         //Read
         List<String> audit = new ArrayList<String>();
-        for(String[] sm: readAudit){
+        for(String[] sm: readWrite.readFromCsvFile("audit.csv")){
             String a1 = sm[0];
             String a2 = sm[1];
             audit.add(sm[0]+","+sm[1]);
         }
         //Read
         List<Concerts> concerts = new ArrayList<Concerts>();
-        for (String[] sm : readConcerts) {
+        for (String[] sm : readWrite.readFromCsvFile("concerts.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -55,7 +59,7 @@ public class Service {
         }
         //Read
         List<Movies> movies = new ArrayList<Movies>();
-        for (String[] sm : readMovies) {
+        for (String[] sm : readWrite.readFromCsvFile("movies.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -90,7 +94,7 @@ public class Service {
         }
         //Read
         List<TennisGames> tennisGames = new ArrayList<TennisGames>();
-        for (String[] sm : readTennisGames) {
+        for (String[] sm : readWrite.readFromCsvFile("tennisGames.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -117,7 +121,7 @@ public class Service {
         }
         //Read
         List<FootballGames> footballGames = new ArrayList<FootballGames>();
-        for (String[] sm : readFootballGames) {
+        for (String[] sm : readWrite.readFromCsvFile("footballGames.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -143,7 +147,7 @@ public class Service {
         }
         //Read
         List<Tours> tours = new ArrayList<Tours>();
-        for (String[] sm : readTours) {
+        for (String[] sm : readWrite.readFromCsvFile("tours.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -167,7 +171,7 @@ public class Service {
             }
             else if (option == 1) {
                 audit.add("Add an event"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 System.out.println("What kind of event is this?");
                 System.out.println("1: Concert\n2: Movie\n3: Tennis Game\n4: Football Game\n5: Tour");
                 Integer op = scanner.nextInt();
@@ -202,7 +206,7 @@ public class Service {
                 System.out.println(tours);
             } else if (option == 2) {
                 audit.add("Add a client to an event"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 System.out.println("Pick a ticket to an event");
                 System.out.println("1: Concert\n2: Movie\n3: Tennis Game\n4: Football Game\n5: Tour");
                 Integer op = scanner.nextInt();
@@ -287,7 +291,7 @@ public class Service {
             }
             else if(option==3){
                 audit.add("Modify client personal data"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 System.out.println("Provide a valid ID");
                 String ID = scanner.next();
                 for(Concerts c: concerts){
@@ -308,7 +312,7 @@ public class Service {
             }
             else if(option==4){
                 audit.add("Capacity distribution for a concert"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 if(concerts.size()==0){
                     System.out.println("There is no active concert!");
                 }
@@ -319,7 +323,7 @@ public class Service {
             }
             else if(option==5){
                 audit.add("Review a movie"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 if (movies.size() == 0) {
                     System.out.println("There is no active movie!");
                 } else {
@@ -338,7 +342,7 @@ public class Service {
             }
             else if(option==6){
                 audit.add("Prediction for all sporting events"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 for(TennisGames tg: tennisGames){
                     System.out.println(tg.winnerPrediction());
                 }
@@ -348,7 +352,7 @@ public class Service {
             }
             else if(option==7) {
                 audit.add("Football game description"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 if (footballGames.size() == 0)
                     System.out.println("There is no active tennis game!");
                 for (FootballGames fg : footballGames) {
@@ -357,7 +361,7 @@ public class Service {
             }
             else if(option==8){
                 audit.add("Renew number of days for a tour"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 if (tours.size() == 0) {
                     System.out.println("There is no active tour!");
                 } else {
@@ -375,7 +379,7 @@ public class Service {
             }
             else if(option==9){
                 audit.add("Remove an event"+","+Timestamp.from(Instant.now()).toString());
-                writeToAudit(audit);
+                readWrite.writeToAudit(audit);
                 Integer i=0;
                 for(Concerts c:concerts){
                     System.out.println(i+" "+c.getName());
@@ -547,44 +551,15 @@ public class Service {
                 writeTours.add(coma.split(","));
             }
 
-            writeToCsvFile(writeConcerts, "concerts.csv");
-            writeToCsvFile(writeMovies, "movies.csv");
-            writeToCsvFile(writeTennisGames, "tennisGames.csv");
-            writeToCsvFile(writeFootballGames, "footballGames.csv");
-            writeToCsvFile(writeTours, "tours.csv");
+            readWrite.writeToCsvFile(writeConcerts, "concerts.csv");
+            readWrite.writeToCsvFile(writeMovies, "movies.csv");
+            readWrite.writeToCsvFile(writeTennisGames, "tennisGames.csv");
+            readWrite.writeToCsvFile(writeFootballGames, "footballGames.csv");
+            readWrite.writeToCsvFile(writeTours, "tours.csv");
 
 
         }
         return single_instance;
     }
 
-    public static void writeToCsvFile(List<String[]> write, String fileName) {
-        try (FileWriter writer = new FileWriter(fileName)) {
-            for (String[] strings : write) {
-                for (int i = 0; i < strings.length; i++) {
-                    writer.append(strings[i]);
-                    if (i < (strings.length - 1))
-                        writer.append(",");
-                }
-                writer.append(System.lineSeparator());
-            }
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static void writeToAudit(List<String> aWrite){
-        try (FileWriter writer = new FileWriter("audit.csv")) {
-            String line = "";
-            for(String write: aWrite) {
-                writer.append(write.split(",")[0]);
-                writer.append(",");
-                writer.append(write.split(",")[1]);
-                writer.append(System.lineSeparator());
-            }
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
