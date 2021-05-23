@@ -38,14 +38,14 @@ public class Service {
         //Read the classes into the Arrays to work with them
         //Read
         List<String> audit = new ArrayList<String>();
-        for(String[] sm: readWrite.readFromCsvFile("audit.csv")){
+        for(String[] sm: readWrite.readFromCsvFile("csv/audit.csv")){
             String a1 = sm[0];
             String a2 = sm[1];
             audit.add(sm[0]+","+sm[1]);
         }
         //Read
         List<Concerts> concerts = new ArrayList<Concerts>();
-        for (String[] sm : readWrite.readFromCsvFile("concerts.csv")) {
+        for (String[] sm : readWrite.readFromCsvFile("csv/concerts.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -59,7 +59,7 @@ public class Service {
         }
         //Read
         List<Movies> movies = new ArrayList<Movies>();
-        for (String[] sm : readWrite.readFromCsvFile("movies.csv")) {
+        for (String[] sm : readWrite.readFromCsvFile("csv/movies.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -94,7 +94,7 @@ public class Service {
         }
         //Read
         List<TennisGames> tennisGames = new ArrayList<TennisGames>();
-        for (String[] sm : readWrite.readFromCsvFile("tennisGames.csv")) {
+        for (String[] sm : readWrite.readFromCsvFile("csv/tennisGames.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -121,7 +121,7 @@ public class Service {
         }
         //Read
         List<FootballGames> footballGames = new ArrayList<FootballGames>();
-        for (String[] sm : readWrite.readFromCsvFile("footballGames.csv")) {
+        for (String[] sm : readWrite.readFromCsvFile("csv/footballGames.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -147,7 +147,7 @@ public class Service {
         }
         //Read
         List<Tours> tours = new ArrayList<Tours>();
-        for (String[] sm : readWrite.readFromCsvFile("tours.csv")) {
+        for (String[] sm : readWrite.readFromCsvFile("csv/tours.csv")) {
             String name=sm[0];
             Integer numberTickets=Integer.parseInt(sm[1]);
             Double price=Double.parseDouble(sm[2]);
@@ -162,7 +162,6 @@ public class Service {
         System.out.println("Welcome to the main menu!");
         System.out.println("Pick an action!");
         System.out.println("0: STOP\n1: Add an event\n2: Add a client to an event\n3: Modify client personal data\n4: Capacity distribution for the concerts\n5: Review a movie\n6: Prediction for all sporting events\n7: Football games description\n8: Renew number of days for a tour\n9: Delete an event");
-
         while(true) {
             Scanner scanner = new Scanner(System.in);
             Integer option = scanner.nextInt();
@@ -551,11 +550,11 @@ public class Service {
                 writeTours.add(coma.split(","));
             }
 
-            readWrite.writeToCsvFile(writeConcerts, "concerts.csv");
-            readWrite.writeToCsvFile(writeMovies, "movies.csv");
-            readWrite.writeToCsvFile(writeTennisGames, "tennisGames.csv");
-            readWrite.writeToCsvFile(writeFootballGames, "footballGames.csv");
-            readWrite.writeToCsvFile(writeTours, "tours.csv");
+            readWrite.writeToCsvFile(writeConcerts, "csv/concerts.csv");
+            readWrite.writeToCsvFile(writeMovies, "csv/movies.csv");
+            readWrite.writeToCsvFile(writeTennisGames, "csv/tennisGames.csv");
+            readWrite.writeToCsvFile(writeFootballGames, "csv/footballGames.csv");
+            readWrite.writeToCsvFile(writeTours, "csv/tours.csv");
 
 
         }
