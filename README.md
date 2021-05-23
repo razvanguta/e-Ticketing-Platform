@@ -1,6 +1,8 @@
 # e-Ticketing Platform
  
  Proiectul acesta dezvolta o platforma de e-Ticketing, unde se gestioneaza achizitia de bilete de catre clienti la diferite evenimente!
+#Conexiunea cu o baza de date:
+Pentru conexiunea cu o baza de date am ales MySQL, unde am creat 4 tabele care reprezinta 4 clase/modele alese pentru operatii de CRUD. FootballGames, Tours, Concerts au o cheie externa, location_id, din tabelul Locations.
 # Citirea si scriera in CSV:
 Pentru citire si scriere am folosit metode, care se folosesc de prelucrarea sirurilor de caractere. Pentru citire am extras fiecare linie din CSV si pentru fiecare tip de eveniment, l-am adaugat in clasa serviciu intr-un array corespunzator obiectul aferent(se executa aceasta operatie la pornirea programului). In clasa serviciu am 9 actiuni( mai exista alte 2 actiuni pentru clasa locatii si clienti care se suprapun cu cele 9 actiuni descrise). Dupa fiecare actiune, pentru fiecare eveniment, se apeleaza metoda de scriere in CSV, transformandu-se fiecare camp in string si ulterior adaugandu-se in CSV(astfel se mentine lista evenimentelor actualizata). Pe ideea anterioara am creat si un fisier CSV pentru audit care contine istoricul comenzilor si ora la care acestea au fost realizate. **Metodele de citire si scriere se afla intr-o clasa generica, care este instantiata in clasa singleton serviciu.** De asemenea, pentru fiecare CSV al unei clase exista un fisier secundar in care scriem si pastram datele, fara a citi din el.
 
