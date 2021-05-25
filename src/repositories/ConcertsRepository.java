@@ -78,7 +78,6 @@ public class ConcertsRepository {
     public void delete(int id, Connection connection) throws  SQLException {
         String sql = "DELETE FROM concerts WHERE concert_id=" + id;
         Statement statement = connection.createStatement();
-
         int rows = statement.executeUpdate(sql);
     }
 }
