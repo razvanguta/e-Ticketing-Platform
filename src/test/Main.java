@@ -31,6 +31,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Service menu = Service.Menu();
+        ServiceDB menu2=ServiceDB.Menu();
     }
 }
 
